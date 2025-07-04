@@ -13,24 +13,33 @@
       color: #333;
     }
 
+    @keyframes colorChange {
+      0%   { color: #ff595e; }
+      25%  { color: #1982c4; }
+      50%  { color: #6a4c93; }
+      75%  { color: #8ac926; }
+      100% { color: #ff595e; }
+    }
+
     header {
       background-color: #2b2d42;
       color: white;
       padding: 2rem;
       text-align: center;
+      min-height: 100px;
     }
 
-    .typing {
-      display: inline-block;
-      border-right: 2px solid white;
-      white-space: nowrap;
-      overflow: hidden;
-      animation: blink 0.7s infinite;
+    header h1 {
+      animation: colorChange 10s linear infinite;
+      margin: 0;
     }
 
-    @keyframes blink {
-      0%, 100% { border-color: white; }
-      50% { border-color: transparent; }
+    header p {
+      color: white;
+      font-weight: 500;
+      font-size: 1.2rem;
+      min-height: 1.5em;
+      margin-top: 0.5rem;
     }
 
     nav {
@@ -44,6 +53,10 @@
       text-decoration: none;
       color: white;
       font-weight: bold;
+      transition: color 0.3s ease;
+    }
+    nav a:hover {
+      color: #2b2d42;
     }
 
     main {
@@ -69,28 +82,69 @@
       background-color: #2b2d42;
       color: white;
     }
+
+    /* Contacto botones */
+    #contacto a {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.6rem 1rem;
+      border-radius: 8px;
+      color: white;
+      text-decoration: none;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+    }
+
+    #contacto a[href^="mailto"] {
+      background-color: #e63946;
+    }
+
+    #contacto a[href*="linkedin.com"] {
+      background-color: #0077b5;
+    }
+
+    #contacto a[href*="github.com"] {
+      background-color: #333;
+    }
+
+    #contacto a[href^="mailto"]:hover {
+      background-color: #c62828;
+      box-shadow: 0 4px 12px rgba(198, 40, 40, 0.6);
+      transform: scale(1.05);
+    }
+
+    #contacto a[href*="linkedin.com"]:hover {
+      background-color: #005582;
+      box-shadow: 0 4px 12px rgba(0, 85, 130, 0.6);
+      transform: scale(1.05);
+    }
+
+    #contacto a[href*="github.com"]:hover {
+      background-color: #1a1a1a;
+      box-shadow: 0 4px 12px rgba(26, 26, 26, 0.6);
+      transform: scale(1.05);
+    }
   </style>
 </head>
 <body>
 
   <header>
     <h1>Alex Hernández</h1>
-    <p class="typing" id="typed-text"></p>
+    <p id="animated-subtitle"></p>
   </header>
 
   <nav>
     <a href="#sobre-mi">Sobre mí</a>
     <a href="#proyectos">Proyectos</a>
-    <a href="#aprendizaje">Aprendizaje</a>
+    <a href="#recursos">Recursos</a>
     <a href="#contacto">Contacto</a>
   </nav>
 
   <main>
     <section id="sobre-mi">
       <h2>Sobre mí</h2>
-      <p>Hola, soy Alex Hernández, estudiante de informática. Me interesa la tecnología, la programación, 
-        la escalada, y los países nórdicos. Este sitio es para 
-        compartir mis proyectos con todos vosotros.</p>
+      <p>Hola, soy Alex Hernández, estudiante informática. Me interesa la tecnología, la programación, 
+        la escalada y los países nórdicos. Este sitio es para compartir mis proyectos con todos vosotros.</p>
     </section>
 
     <section id="proyectos">
@@ -101,19 +155,40 @@
       </ul>
     </section>
 
-    <section id="aprendizaje">
-      <h2>Aprendizaje</h2>
-      <p>Aquí iré apuntando cosas nuevas que voy aprendiendo, como frameworks, trucos de programación o recursos útiles.</p>
-      <ul>
-        <li><strong>03/07/2025:</strong> Aprendí a usar Git desde la terminal.</li>
-        <li><strong>30/06/2025:</strong> Entendí cómo funcionan las promesas en JavaScript.</li>
-      </ul>
+    <section id="recursos">
+      <h2>Recursos y aprendizajes</h2>
+      <p>Aquí iré publicando artículos, reflexiones y recursos que voy aprendiendo durante mi carrera y vida personal.</p>
     </section>
 
     <section id="contacto">
       <h2>Contacto</h2>
-      <p>Correo: <a href="mailto:ahernandezguerrero582@gmail.com">ahernandezguerrero582@gmail.com</a></p>
-      <p>LinkedIn / GitHub / etc.</p>
+      <div style="display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1rem;">
+
+        <!-- Email -->
+        <a href="mailto:ahernandezguerrero582@gmail.com" target="_blank" aria-label="Enviar correo a Alex Hernández">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M12 13.065 0 6.521V18a2 2 0 0 0 2 2h20a2 2 0 0 0 2-2V6.521l-12 6.544zM22 4H2a2 2 0 0 0-2 2l12 6.521L24 6a2 2 0 0 0-2-2z"/>
+          </svg>
+          Email
+        </a>
+
+        <!-- LinkedIn -->
+        <a href="https://www.linkedin.com/in/alex-hern%C3%A1ndez-guerrero-40830731b/" target="_blank" aria-label="Perfil LinkedIn de Alex Hernández">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M20.447 20.452h-3.554v-5.569c0-1.327-.025-3.038-1.852-3.038-1.853 0-2.136 1.446-2.136 2.938v5.669h-3.554v-11.5h3.414v1.571h.049c.476-.9 1.636-1.852 3.367-1.852 3.599 0 4.264 2.368 4.264 5.455v6.326zM5.337 8.433c-1.144 0-2.068-.927-2.068-2.068 0-1.144.924-2.068 2.068-2.068s2.068.924 2.068 2.068c0 1.141-.924 2.068-2.068 2.068zM6.765 20.452h-2.854v-11.5h2.854v11.5z"/>
+          </svg>
+          LinkedIn
+        </a>
+
+        <!-- GitHub -->
+        <a href="https://github.com/Warrior20025" target="_blank" aria-label="Perfil GitHub de Alex Hernández">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.26.82-.577 0-.285-.012-1.24-.017-2.243-3.338.726-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.09-.745.083-.729.083-.729 1.205.084 1.838 1.237 1.838 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.605-2.665-.3-5.467-1.335-5.467-5.932 0-1.31.468-2.382 1.236-3.22-.124-.303-.535-1.523.117-3.176 0 0 1.008-.322 3.3 1.23a11.5 11.5 0 0 1 3.003-.403c1.02.005 2.046.138 3.003.403 2.29-1.552 3.296-1.23 3.296-1.23.653 1.653.242 2.873.12 3.176.77.838 1.233 1.91 1.233 3.22 0 4.61-2.807 5.63-5.48 5.922.43.372.823 1.103.823 2.222 0 1.604-.015 2.896-.015 3.29 0 .32.216.694.825.576C20.565 21.796 24 17.296 24 12c0-6.63-5.37-12-12-12z"/>
+          </svg>
+          GitHub
+        </a>
+
+      </div>
     </section>
   </main>
 
@@ -122,19 +197,18 @@
   </footer>
 
   <script>
-    const text = "Estudiante de Informática | Apasionado por la escalada y los países nórdicos";
-    const typedText = document.getElementById("typed-text");
-
+    const subtitle = "Estudiante de Ingeniería Informática | Apasionado por la escalada y los países nórdicos";
+    const animatedSubtitle = document.getElementById('animated-subtitle');
     let index = 0;
-    function type() {
-      if (index < text.length) {
-        typedText.textContent += text.charAt(index);
+
+    function typeWriter() {
+      if(index < subtitle.length){
+        animatedSubtitle.textContent += subtitle.charAt(index);
         index++;
-        setTimeout(type, 40); // velocidad de escritura (letra x letra)
+        setTimeout(typeWriter, 70);
       }
     }
-
-    window.onload = type;
+    window.onload = typeWriter;
   </script>
 
 </body>
