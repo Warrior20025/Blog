@@ -63,13 +63,26 @@
       overflow: hidden;
       border-right: 2px solid white;
       width: 0;
-      animation: typing 4s steps(60, end) forwards;
+      animation: typing 4s steps(83, end) forwards, blink-caret 0.75s step-end infinite;
+      animation-delay: 0s, 4s;  /* blink-caret empieza justo después de typing */
+      animation-fill-mode: forwards, none;
     }
 
     @keyframes typing {
+      from {
+        width: 0;
+      }
+
       to {
-        width: 100%;
-        border-right: none;
+        width: 71ch;  /* ancho igual a número de caracteres */
+      }
+    }
+
+    @keyframes blink-caret {
+      0%, 100% {
+        border-color: white;
+      } 50% {
+        border-color: transparent;
       }
     }
 
@@ -323,7 +336,7 @@
     </section>
 
     <!-- CONTACTO -->
-    <section id="contacto">
+    <section id="contacto" class="fade-in-section">
       <h2 style="text-align: center;">Contacto</h2>
       <div style="display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1rem; justify-content: center;">
 
