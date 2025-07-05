@@ -394,6 +394,11 @@
     scrollBtn.addEventListener("click", () => {
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
+
+    // Forzar scroll arriba al cargar la página
+    window.addEventListener('load', () => {
+      window.scrollTo(0, 0);
+    });
   </script>
 
 </body>
